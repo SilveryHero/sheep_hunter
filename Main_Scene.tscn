@@ -197,7 +197,6 @@ position = Vector2(324, 209)
 ritual_damage = 2
 ritual_interval = 25.0
 ritual_scene = ExtResource("2_w1gtw")
-health = 10
 
 [node name="RemoteTransform2D - Camera" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
