@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjryxku8n1244"]
+
+[ext_resource type="Script" path="res://gameUI/damageDigit.gd" id="1_n2y3o"]
+
+[sub_resource type="SystemFont" id="SystemFont_wj1im"]
+font_names = PackedStringArray("Century Gothic")
+font_weight = 600
+
+[sub_resource type="LabelSettings" id="LabelSettings_xary7"]
+line_spacing = 32.0
+font = SubResource("SystemFont_wj1im")
+font_size = 36
+font_color = Color(1, 0, 0.172549, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_nrido"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_bb1bf"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(0.258816, 0.378934, 0.329877),
+"update": 0,
+"values": [Vector2(0, 15), Vector2(0, -5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fao6"]
+_data = {
+"RESET": SubResource("Animation_nrido"),
+"default": SubResource("Animation_bb1bf")
+}
+
+[node name="DamageDigit" type="Node2D"]
+position = Vector2(470, 335)
+script = ExtResource("1_n2y3o")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 15)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Label" type="Label" parent="Node2D"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -30.0
+offset_right = 15.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "65"
+label_settings = SubResource("LabelSettings_xary7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Node2D/Label")
+libraries = {
+"": SubResource("AnimationLibrary_0fao6")
+}
+autoplay = "default"

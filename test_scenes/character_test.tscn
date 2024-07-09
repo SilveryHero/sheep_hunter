@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs3meha77a2sm"]
+
+[ext_resource type="PackedScene" uid="uid://cuyv38px0ntpw" path="res://Player/player.tscn" id="1_g26oe"]
+[ext_resource type="PackedScene" uid="uid://cb8bo2ys8ag0r" path="res://Player/ritual.tscn" id="2_mqy4b"]
+[ext_resource type="PackedScene" uid="uid://d7c5115cm0c4" path="res://Enemies/Pawn.tscn" id="3_e6r0e"]
+[ext_resource type="PackedScene" uid="uid://cnbyqsx0dkwc3" path="res://misc/regen.tscn" id="4_bd4al"]
+[ext_resource type="PackedScene" uid="uid://dc3somcl0ifra" path="res://test_scenes/mob_spawner.tscn" id="5_i5rdc"]
+[ext_resource type="PackedScene" uid="uid://cfdkbo4txck14" path="res://Enemies/sheep.tscn" id="6_ho0r7"]
+[ext_resource type="PackedScene" uid="uid://ocasvskievby" path="res://gameUI/gameUI.tscn" id="7_lioi7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_g26oe")]
+position = Vector2(110, 171)
+ritual_damage = 2
+ritual_interval = 5.0
+ritual_scene = ExtResource("2_mqy4b")
+
+[node name="Pawn" parent="." instance=ExtResource("3_e6r0e")]
+position = Vector2(838, 172)
+
+[node name="Regen" parent="." instance=ExtResource("4_bd4al")]
+position = Vector2(207, 566)
+
+[node name="Regen2" parent="." instance=ExtResource("4_bd4al")]
+position = Vector2(952, 551)
+
+[node name="mobSpawner" parent="." instance=ExtResource("5_i5rdc")]
+creatures = Array[PackedScene]([ExtResource("3_e6r0e"), ExtResource("6_ho0r7")])
+
+[node name="Pawn2" parent="." instance=ExtResource("6_ho0r7")]
+position = Vector2(912, 803)
+
+[node name="gameUI" parent="." instance=ExtResource("7_lioi7")]

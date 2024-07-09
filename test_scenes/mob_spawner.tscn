@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc3somcl0ifra"]
+
+[ext_resource type="Script" path="res://test_scenes/mob_spawner.gd" id="1_rsa4y"]
+
+[sub_resource type="Curve2D" id="Curve2D_53fdh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1048, -478, 0, 0, 0, 0, 401, -451, 0, 0, 0, 0, 386, 477, 0, 0, 0, 0, -1063, 472, 0, 0, 0, 0, -1056, -473)
+}
+point_count = 5
+
+[node name="mobSpawner" type="Node2D"]
+position = Vector2(892, 397)
+script = ExtResource("1_rsa4y")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_53fdh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-1048, -478)
+rotation = 0.0186314
